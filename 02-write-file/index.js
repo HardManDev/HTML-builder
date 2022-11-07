@@ -13,7 +13,7 @@ const readlineInterface = readline.createInterface({
 readlineInterface.setPrompt('Enter string (or type "exit" for exit): ');
 
 readlineInterface.on('line', (line) => {
-  if (line === 'exit') {
+  if (line.trim() === 'exit') {
     readlineInterface.close();
     return;
   }
@@ -23,7 +23,7 @@ readlineInterface.on('line', (line) => {
 readlineInterface.on('SIGINT', readlineInterface.close);
 
 readlineInterface.on('close', () => {
-  console.log('Process exit with code 0');
+  process.stdout.write('\nProcess exit with code 0. Goodbye :)\n');
 });
 
 
