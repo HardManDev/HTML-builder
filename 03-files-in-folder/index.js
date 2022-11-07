@@ -16,7 +16,9 @@ fs.readdir(
         const fileSize = stats.size;
 
         if (stats.isFile())
-          console.log(`${fileName} - ${fileExt} - ${fileSize / 1024}KB`);
+          console.log(`${fileName} - ${fileExt} - ${
+            (fileSize / 1024).toFixed(2)}KB`
+          );
       });
     });
   }
