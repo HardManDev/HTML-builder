@@ -10,7 +10,9 @@ const destinationPath = path.resolve(__dirname, 'project-dist');
 
 const mergeHtml = async () => {
   let templateString = await readTextFileData(htmlTemplatePath);
-  const writeStream = fs.createWriteStream(path.resolve(destinationPath, 'index.html'));
+  const writeStream = fs.createWriteStream(
+    path.resolve(destinationPath, 'index.html')
+  );
 
   let matchedRegex;
   while ((matchedRegex = templateRegex.exec(templateString)) !== null) {
@@ -37,8 +39,9 @@ const mergeStyles = () => {
     },
     (err, files) => {
       files.forEach(file => {
-        fs.createReadStream(path.resolve(stylesPath, file.name))
-          .pipe(writeStream, { end: false });
+        if (file && path.extname(file.name) === '.css')
+          fs.createReadStream(path.resolve(stylesPath, file.name))
+            .pipe(writeStream, { end: false });
       });
     }
   );
