@@ -1,3 +1,8 @@
+/*
+  Если в этом задании (или других) возникает ошибка, обновите свои инструменты!
+    Node JS, PowerShell (если проверяете в нем),
+    Git/GitBush (если проверяете в нем)
+ */
 const fs = require('fs');
 const path = require('path');
 
